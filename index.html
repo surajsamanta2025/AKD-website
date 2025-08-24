@@ -1,122 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AKD Olympiads</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
+    /* ====== Global ====== */
+    :root{
+      --bg:#0d0d0d;
+      --bg-soft:#161625;
+      --bg-card:#1e1e2f;
+      --text:#f5f5f5;
+      --muted:#bfbfc9;
+      --accent1:#6a11cb;   /* purple */
+      --accent2:#ff0066;   /* pink */
+      --accent3:#ff7e29;   /* orange */
+      --accent4:#2575fc;   /* blue */
+      --highlight:#ffe066; /* warm yellow */
+      --border:#2a2a3d;
+      --shadow:rgba(0,0,0,.55);
     }
-    header {
-      background: linear-gradient(135deg, #6a11cb, #ff0066);
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Helvetica, sans-serif;
+      background-color:var(--bg);
+      color:var(--text);
+    }
+
+    /* ====== Header / Nav ====== */
+    header{
+      background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
       padding: 20px;
       text-align: center;
+      box-shadow: 0 6px 18px var(--shadow);
+      position: sticky; top:0; z-index: 20;
     }
-    header nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
+    header nav a{
+      margin:0 14px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.2px;
+      transition: color .25s ease, opacity .25s ease;
+      opacity:.95;
     }
-    .logo-section {
-      text-align: center;
-      padding: 30px 0;
-      background: linear-gradient(135deg, #6a11cb, #ff0066);
+    header nav a:hover{ color: var(--highlight); opacity:1; }
+
+    /* ====== Logo band ====== */
+    .logo-section{
+      text-align:center;
+      padding:30px 20px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
     }
-    .logo-section img {
-      max-width: 220px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    .logo-section img{
+      max-width:220px;
+      border-radius:12px;
+      box-shadow:0 8px 24px var(--shadow);
     }
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: #222;
+    .tagline{
+      margin-top:12px;
+      font-size:1.2em;
+      font-weight:bold;
+      color:#fff8e1;
+      text-shadow:0 2px 6px rgba(0,0,0,.4);
     }
-    .hero h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+
+    /* ====== Hero ====== */
+    .hero{
+      text-align:center;
+      padding:72px 20px;
+      background: radial-gradient(1100px 600px at 50% -200px, rgba(255,126,41,.25), transparent 60%),
+                  linear-gradient(160deg, #1b1b2f, #16213e);
     }
-    .hero p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+    .hero h1{ font-size:2.8em; margin:0 0 18px; color: var(--highlight); }
+    .hero p{ font-size:1.25em; margin:0 0 28px; color:#e6e6f0; }
+    .hero a{
+      display:inline-block;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      color:#fff; padding:14px 28px; border-radius:12px; text-decoration:none; font-weight:800;
+      box-shadow:0 10px 26px rgba(255,0,102,.35);
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
     }
-    .hero a {
-      background: #ff0066;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .hero a:hover{ transform: translateY(-2px) scale(1.03); box-shadow:0 14px 30px rgba(255,126,41,.5); filter:saturate(1.1); }
+
+    /* ====== Sections ====== */
+    .section{ padding:60px 20px; text-align:center; }
+    h2{ font-size:2rem; margin:0; }
+    .muted{ color:var(--muted); font-size:.95em; }
+    .divider{ height:1px; background: #2b2b3d; border:0; margin:28px 0; }
+
+    /* ====== About (Special Styling) ====== */
+    #about{
+      background: #0d0d0d;
     }
-    .section {
-      padding: 50px 20px;
-      text-align: center;
+    #about h2{ color: red; }
+    .about-wrap{
+      background: #fff;
+      color: red;
+      max-width:900px;
+      margin:20px auto 0;
+      text-align:left;
+      line-height:1.75;
+      padding:30px;
+      border-radius:16px;
+      border:2px solid red;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
-    .plans-group {
-      margin: 30px auto 10px;
-      max-width: 1100px;
-      text-align: left;
+    .about-wrap h3{ margin-top:18px; color: red; }
+    .about-wrap ul{ margin:12px 0 0 20px; padding:0; }
+    .about-wrap li{ margin:8px 0; }
+
+    /* ====== Cards / Grids ====== */
+    .plans-group{ margin:30px auto 10px; max-width:1100px; text-align:left; }
+    .plans-group h3{ margin: 16px 0 10px; color: var(--highlight); font-size:1.25rem; }
+    .courses, .plans-grid{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap:20px; margin-top:18px;
     }
-    .plans-group h3 {
-      margin: 20px 0 10px;
-      color: #ffd1e0;
-      font-size: 1.4em;
+    .card{
+      background: var(--bg-card);
+      padding:22px; border-radius:16px; box-shadow:0 8px 20px var(--shadow);
+      border:1px solid var(--border);
+      transition: transform .25s ease, box-shadow .25s ease, background .3s ease, border-color .3s ease;
     }
-    .courses, .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 15px;
+    .card h4, .card h3{ margin:0 0 10px; color:#ff4da6; }
+    .card p{ margin:8px 0; color:#e3e3ee; }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.6);
+      background: linear-gradient(145deg, var(--bg-card), #242446);
+      border-color:#343454;
     }
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+
+    /* ====== Badges ====== */
+    .badge{
+      display:inline-block;
+      background: linear-gradient(90deg, var(--accent1), var(--accent4));
+      border-radius:999px; padding:7px 14px; font-size:.85em; color:#fff; font-weight:800;
+      letter-spacing:.2px; box-shadow:0 6px 14px var(--shadow);
     }
-    .card h4, .card h3 {
-      margin-bottom: 12px;
-      color: #ff0066;
+
+    /* ====== WhatsApp CTA ====== */
+    .whatsapp{
+      display:inline-block; background:#25D366; color:#fff; padding:14px 24px; border-radius:12px;
+      text-decoration:none; font-weight:800; margin-top:22px; letter-spacing:.2px;
+      box-shadow:0 8px 22px rgba(0,0,0,.4); transition: transform .2s ease, filter .2s ease;
     }
-    .card p {
-      margin: 8px 0;
-      color: #ddd;
-      line-height: 1.4;
+    .whatsapp:hover{ transform: translateY(-2px) scale(1.03); filter: brightness(1.05); }
+
+    /* ====== Footer ====== */
+    footer{
+      background:#0b0b0b; text-align:center; padding:18px; font-size:.95em; color:#bdbdcc;
+      border-top:1px solid #1f1f2f;
     }
-    .badge {
-      display: inline-block;
-      background: #2a2a2a;
-      border: 1px solid #333;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 0.85em;
-      color: #bbb;
+
+    /* ====== Responsive tweaks ====== */
+    @media (max-width:480px){
+      .hero h1{ font-size:2.2em; }
+      .hero p{ font-size:1.05em; }
     }
-    .whatsapp {
-      display: inline-block;
-      background: #25D366;
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #bbb;
-    }
-    /* utilities */
-    .muted { color: #aaa; font-size: 0.9em; }
-    .divider { height: 1px; background: #222; border: 0; margin: 28px 0; }
   </style>
 </head>
 <body>
@@ -134,19 +177,57 @@
   <!-- Logo Section -->
   <div class="logo-section">
     <img src="images/akd-logo.jpeg" alt="AKD Olympiads Logo">
+    <div class="tagline">Nurturing Minds, Building Champions for Life</div>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to AKD Olympiads</h1>
-    <p>Building strong foundations in Maths, Science, English & Computer Science for Classes 1–10</p>
+    <p>Building strong foundations in Maths, Science, English & Computer Science for Classes 1–12</p>
     <a href="#plans">Explore Our Plans</a>
   </section>
 
   <!-- About Section -->
   <section id="about" class="section">
     <h2>About Us</h2>
-    <p>AKD Olympiads is dedicated to preparing students for Olympiads and school excellence. With expert teachers and structured programs, we help students excel in academics while sharpening problem-solving skills.</p>
+    <div class="about-wrap">
+      <p>
+        At <strong>AKD Olympiads</strong>, we believe true education goes beyond memorizing facts —
+        it’s about building <strong>thinking skills, confidence, and resilience</strong>. Our mission
+        is to deliver a <strong>structured yet flexible</strong> learning ecosystem that nurtures
+        curiosity, sharpens reasoning, and prepares students for both <strong>Olympiad excellence</strong>
+        and <strong>school academics</strong>.
+      </p>
+
+      <h3>📘 Our Approach</h3>
+      <ul>
+        <li>🔍 <strong>Concept Clarity First:</strong> Strong foundations in Mathematics, Science, English, and Computer Science — always the “why” behind the “what”.</li>
+        <li>📈 <strong>Step-by-Step Learning:</strong> Modular lessons so every learner progresses at a comfortable, steady pace.</li>
+        <li>💡 <strong>Interactive Teaching:</strong> Live discussions, problem-solving, and real-life examples to make learning practical and engaging.</li>
+        <li>📝 <strong>Regular Assessments:</strong> Frequent quizzes, mock tests, and feedback loops to track progress and close gaps quickly.</li>
+        <li>🎯 <strong>Balanced Rigor:</strong> Challenging enough for Olympiads, aligned to school curricula for consistent term results.</li>
+      </ul>
+
+      <h3>🌱 Our Philosophy</h3>
+      <ul>
+        <li>👩‍🎓 <strong>Every child is unique:</strong> Personalized learning paths based on strengths, gaps, and goals.</li>
+        <li>💪 <strong>Growth mindset:</strong> Mistakes are learning opportunities; we coach reflection and iteration.</li>
+        <li>♟️ <strong>Beyond Academics:</strong> We integrate <strong>Chess</strong>, logical puzzles, and <strong>Mock Tests</strong> to build focus and strategy.</li>
+        <li>🌟 <strong>Holistic Growth:</strong> Curiosity, discipline, creativity — not just marks, but life-long learning skills.</li>
+      </ul>
+
+      <h3>🚀 What Sets Us Apart</h3>
+      <ul>
+        <li>📚 <strong>Olympiad-Focused Curriculum:</strong> Mapped to national & international patterns.</li>
+        <li>👨‍🏫 <strong>Expert Faculty:</strong> Proven competitive coaching experience.</li>
+        <li>👥 <strong>Small Batch Sizes:</strong> Real individual attention and doubt-solving.</li>
+        <li>♟️ <strong>Structured Add-ons:</strong> <strong>Mock Test</strong> (₹800/subject), <strong>Chess</strong> (₹800), <strong>Crash Course</strong>.</li>
+        <li>💡 <strong>Flexible Plans:</strong> Clear tiers for Classes 1–5, 6–10, and 11–12 to fit every need.</li>
+        <li>🤝 <strong>Parent Partnership:</strong> Transparent progress reports and regular communication.</li>
+      </ul>
+
+      <p>At AKD Olympiads, we don’t just prepare students for exams — <strong>we prepare them for life</strong>. ✨</p>
+    </div>
   </section>
 
   <!-- Courses Section -->
@@ -164,6 +245,7 @@
   <section id="plans" class="section">
     <h2>Our Plans</h2>
 
+    <!-- Classes 1–5 -->
     <div class="plans-group">
       <span class="badge">For Classes 1–5</span>
       <h3>Choose a plan for Classes 1–5</h3>
@@ -184,8 +266,8 @@
           <p class="muted">Comprehensive support across core areas.</p>
         </div>
         <div class="card">
-          <h4>Platinum</h4>
-          <p>All subjects • 8+ classes/week</p>
+          <h4>Diamond</h4>
+          <p>4 subjects • 8+ classes/week</p>
           <p class="muted">Full coverage with maximum practice.</p>
         </div>
       </div>
@@ -193,6 +275,7 @@
 
     <hr class="divider" />
 
+    <!-- Classes 6–10 -->
     <div class="plans-group">
       <span class="badge">For Classes 6–10</span>
       <h3>Choose a plan for Classes 6–10</h3>
@@ -213,9 +296,59 @@
           <p class="muted">Deeper coverage with Olympiad focus.</p>
         </div>
         <div class="card">
-          <h4>Platinum Plus</h4>
-          <p>All subjects • 8+ classes/week</p>
+          <h4>Diamond Plus</h4>
+          <p>4 subjects • 8+ classes/week</p>
           <p class="muted">Intensive plan with doubt-solving & tests.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Classes 11–12 -->
+    <div class="plans-group">
+      <span class="badge">For Classes 11–12</span>
+      <h3>Choose a plan for Classes 11–12</h3>
+      <div class="plans-grid">
+        <div class="card">
+          <h4>Platinum</h4>
+          <p>Maths only • 3 classes/week</p>
+          <p class="muted">Focused plan for JEE/Board preparation.</p>
+        </div>
+        <div class="card">
+          <h4>Platinum Plus</h4>
+          <p>Maths + Physics • 6 classes/week</p>
+          <p class="muted">Comprehensive support for advanced preparation.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Add-on Plans -->
+    <div class="plans-group">
+      <span class="badge">Add-on Plans (All Classes)</span>
+      <h3>Boost your learning with Add-ons</h3>
+      <div class="plans-grid">
+        <div class="card">
+          <h4>Mock Test</h4>
+          <p>Regular mock tests • ₹800 per subject</p>
+          <p class="muted">Practice under exam conditions for better results.</p>
+        </div>
+        <div class="card">
+          <h4>Chess</h4>
+          <p>Weekly chess classes • ₹800</p>
+          <p class="muted">Enhance concentration, logic & strategic thinking.</p>
+        </div>
+        <div class="card">
+          <h4>Individual Class (Any Subject)</h4>
+          <p>On-demand 1:1 session • any subject</p>
+          <p class="muted">Perfect for doubt-solving, revision, or a quick topic boost. Book per session.</p>
+        </div>
+        <div class="card">
+          <h4>Crash Course</h4>
+          <p>Last minute help for exams</p>
+          <p class="muted">Short-term intensive preparation to maximize performance in upcoming exams.</p>
         </div>
       </div>
     </div>
