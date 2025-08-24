@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,11 +57,21 @@
       padding: 50px 20px;
       text-align: center;
     }
-    .courses, .plans {
+    .plans-group {
+      margin: 30px auto 10px;
+      max-width: 1100px;
+      text-align: left;
+    }
+    .plans-group h3 {
+      margin: 20px 0 10px;
+      color: #ffd1e0;
+      font-size: 1.4em;
+    }
+    .courses, .plans-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin-top: 30px;
+      margin-top: 15px;
     }
     .card {
       background: #1a1a1a;
@@ -70,9 +79,23 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
-    .card h3 {
-      margin-bottom: 15px;
+    .card h4, .card h3 {
+      margin-bottom: 12px;
       color: #ff0066;
+    }
+    .card p {
+      margin: 8px 0;
+      color: #ddd;
+      line-height: 1.4;
+    }
+    .badge {
+      display: inline-block;
+      background: #2a2a2a;
+      border: 1px solid #333;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.85em;
+      color: #bbb;
     }
     .whatsapp {
       display: inline-block;
@@ -91,6 +114,9 @@
       font-size: 0.9em;
       color: #bbb;
     }
+    /* utilities */
+    .muted { color: #aaa; font-size: 0.9em; }
+    .divider { height: 1px; background: #222; border: 0; margin: 28px 0; }
   </style>
 </head>
 <body>
@@ -113,7 +139,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to AKD Olympiads</h1>
-    <p>Building strong foundations in Maths, Science, English & GK for Classes 1–10</p>
+    <p>Building strong foundations in Maths, Science, English & Computer Science for Classes 1–10</p>
     <a href="#plans">Explore Our Plans</a>
   </section>
 
@@ -137,12 +163,63 @@
   <!-- Plans Section -->
   <section id="plans" class="section">
     <h2>Our Plans</h2>
-    <div class="plans">
-      <div class="card"><h3>Bronze Plan</h3><p>One subject • 2 classes/week</p></div>
-      <div class="card"><h3>Silver Plan</h3><p>Two subjects • 4 classes/week</p></div>
-      <div class="card"><h3>Gold Plan</h3><p>Three subjects • 6 classes/week</p></div>
-      <div class="card"><h3>Platinum Plan</h3><p>All subjects • 8+ classes/week</p></div>
+
+    <div class="plans-group">
+      <span class="badge">For Classes 1–5</span>
+      <h3>Choose a plan for Classes 1–5</h3>
+      <div class="plans-grid">
+        <div class="card">
+          <h4>Bronze</h4>
+          <p>One subject • 2 classes/week</p>
+          <p class="muted">Ideal for a light start and concept clarity.</p>
+        </div>
+        <div class="card">
+          <h4>Silver</h4>
+          <p>Two subjects • 4 classes/week</p>
+          <p class="muted">Balanced approach for steady progress.</p>
+        </div>
+        <div class="card">
+          <h4>Gold</h4>
+          <p>Three subjects • 6 classes/week</p>
+          <p class="muted">Comprehensive support across core areas.</p>
+        </div>
+        <div class="card">
+          <h4>Platinum</h4>
+          <p>All subjects • 8+ classes/week</p>
+          <p class="muted">Full coverage with maximum practice.</p>
+        </div>
+      </div>
     </div>
+
+    <hr class="divider" />
+
+    <div class="plans-group">
+      <span class="badge">For Classes 6–10</span>
+      <h3>Choose a plan for Classes 6–10</h3>
+      <div class="plans-grid">
+        <div class="card">
+          <h4>Bronze Plus</h4>
+          <p>One subject • 2 classes/week</p>
+          <p class="muted">Strengthen fundamentals with structured practice.</p>
+        </div>
+        <div class="card">
+          <h4>Silver Plus</h4>
+          <p>Two subjects • 4 classes/week</p>
+          <p class="muted">Balanced load with regular assessments.</p>
+        </div>
+        <div class="card">
+          <h4>Gold Plus</h4>
+          <p>Three subjects • 6 classes/week</p>
+          <p class="muted">Deeper coverage with Olympiad focus.</p>
+        </div>
+        <div class="card">
+          <h4>Platinum Plus</h4>
+          <p>All subjects • 8+ classes/week</p>
+          <p class="muted">Intensive plan with doubt-solving & tests.</p>
+        </div>
+      </div>
+    </div>
+
     <a href="https://wa.me/919038496824" class="whatsapp">📲 WhatsApp for Demo</a>
   </section>
 
